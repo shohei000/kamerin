@@ -1,0 +1,125 @@
+.inner{
+  padding: 0 14px;
+}
+
+.btn{
+  position: relative;
+  background: #ea5b91;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin: 14px 14px 0 14px;
+  display: block;
+  text-align: center;
+  font-family: "Nico Moji";
+  text-decoration: none;
+  font-size: 16px;
+  &--arrow{
+    position: absolute;
+    display: block;
+    content: "";
+    top: 50%;
+    right: 10%;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-radius: 1px;
+    transform: rotate(45deg) translateY(-50%);
+  }
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+[data-photos]{
+  position: relative;
+}
+
+[data-photos] img{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+[data-photos] img:not(:nth-child(1)){display: none;}
+
+
+.key{
+  position: relative;
+  height: 210px;
+  background: -webkit-linear-gradient(to right, #00d2ff, #3a7bd5);
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
+}
+
+.key-inner{
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+}
+
+.key h1{
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-family: "Nico Moji";
+}
+.key h1,
+.key h2{
+  color: #fff;
+}
+
+.camera-icon{
+  width: 37px;
+  position: absolute;
+  top: 23%;
+  right: 19%;
+  transform: rotate(17deg);
+}
+
+.camera-icon img{
+  width: 100%;
+}
+
+
+.nav{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top:1px solid #eaeaea;
+  z-index: 50;
+  background-color: #f7f7f7;
+  height: 45px;
+}
+
+.nav-inner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-link{
+  display: block;
+  flex: 1;
+  text-align: center;
+}
+
+.nav-link img{
+  width: 28px;
+}
+
+.footer{
+  margin-top: 50px;
+  padding: 14px 0;
+  background-color: #fff;
+  text-align: center;
+}

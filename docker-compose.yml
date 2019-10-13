@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    build: ./
+    ports:
+      - 8888:80
+    depends_on:
+      - mysql
+    volumes:
+      - .:/var/www/html
+    tty: true
+    privileged: true
+    restart: always
+  mysql:
+    image: mysql:5.6
+    restart: always
+    volumes:
+      - .db:/var/lib/mysql
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1081:1080"
+      - "1026:1025"

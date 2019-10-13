@@ -1,0 +1,111 @@
+.grapher-list-wrap{
+  background: #f9f9f9;
+}
+
+.grapher-list{
+  position: relative;
+  display: flex;
+  flex-wrap:wrap;
+  padding-bottom: 80px;
+  margin-top: -30px;
+}
+
+.grapher-photos-wrap{
+  position: relative;
+}
+
+.grapher-photos-wrap .dots{
+  position: absolute;
+  bottom: 3px;
+  right: 10px;
+  z-index: 30;
+}
+
+.grapher-photos-wrap .dots span{
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.grapher-photos-wrap .dots span:after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #ccc;
+  font-size: 14px;
+}
+
+.grapher-photos-wrap .dots span.is-active:after{
+  background-color: #387fd7;
+}
+
+.grapher-box{
+  width: calc(100% - 50% - 7px);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+  margin-right: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.grapher-box:nth-child(2n){margin-right: 0;}
+
+.grapher-box-link{
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+
+.my-sns{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.my-sns a{
+  display: inline-block;
+  width: 20px;
+}
+
+.my-sns a img{
+  width: 100%;
+}
+
+.grapher-box-photos{
+  position: relative;
+  height: 160px;
+}
+
+.grapher-box-info{
+  padding: 14px;
+  text-align: center;
+}
+
+.grapher-box-name{
+  color: #484e5a;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.grapher-box-pref{
+  color: #387fd7;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+//vuetify打ち消し
+.v-dialog__content{
+  position: absolute !important;
+}
