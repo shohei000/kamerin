@@ -12,18 +12,26 @@
         <span></span>
       </div>
     </div>
-    <a href="./grapher.html" class="grapher-box-link">
+    <div class="grapher-box-link" v-on="on">
       <div class="grapher-box-info">
-        <div class="grapher-box-name">なおこ</div>
+        <div class="grapher-box-name">{{ user.name }}</div>
         <div class="grapher-box-pref">神奈川県</div>
       </div>
       <span class="btn">みてみる</span>
-    </a>
+    </div>
   </div>
 </template>
 
 
+
+
 <script>
-export default {
-}
+  export default {
+    props: {
+      user: {
+        type: Object,
+        default: ''
+      }
+    }
+  }
 </script>

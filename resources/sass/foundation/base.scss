@@ -28,3 +28,50 @@ input, button, textarea, select {
 ul,li{
   list-style: none;
 }
+
+.v-application a{
+  text-decoration: none !important;
+  height: 100% !important;
+}
+
+.v-bottom-navigation{
+  position: fixed !important;
+  width: 100% !important;
+  z-index: 100;
+  height: 49px !important;
+}
+.v-item-group.v-bottom-navigation .v-btn.v-btn--active .v-btn__content{
+  color: #397ed6 !important;
+}
+.v-item-group.v-bottom-navigation {
+  justify-content: space-evenly !important;
+}
+//vuetify打ち消し
+.v-application ol, 
+.v-application ul{
+  padding-left: 0 !important;
+}
+.v-dialog:not(.v-dialog--fullscreen) {
+  // max-height: 100% !important;
+  overflow: scroll !important;
+}
+.v-parallax__image-container{
+  height: 210px !important;
+}
+
+.v-item-group.v-bottom-navigation .v-btn .v-btn__content>:not(.v-icon){
+  line-height: 0.7 !important;
+  font-weight: bold !important;
+}
+
+.v-bottom-navigation .mdi:before, 
+.v-bottom-navigation .mdi-set{
+  font-size: 30px !important;
+}
+
+.v-bottom-navigation .v-ripple__container{
+  display: none !important;
+}
+.v-bottom-navigation .v-btn:before{
+  content: none !important;
+}

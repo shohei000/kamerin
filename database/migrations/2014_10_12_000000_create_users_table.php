@@ -15,8 +15,19 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('role')->default(1);
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('icon_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('profile_text')->nullable();
+            $table->string('photo_1')->nullable();
+            $table->string('photo_2')->nullable();
+            $table->string('photo_3')->nullable();
+            $table->string('photo_4')->nullable();
+            $table->string('photo_5')->nullable();
+            $table->string('equipment')->nullable();                      //機材
+            $table->integer('price')->nullable();                         //料金
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

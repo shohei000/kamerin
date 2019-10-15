@@ -10,7 +10,7 @@
       <div class="grapher-okmark"><img src="/assets/img/dm_ok.svg" alt=""></div>
       <div class="grapher-block flex">
         <div class="grapher-cap"><img src="/assets/img/human/1.jpg" alt=""></div>
-        <div class="grapher-name">たろ</div>
+        <div class="grapher-name">{{user.name}}</div>
       </div>
       <div class="grapher-block">
         <div class="grapher-block-title">活動場所</div>
@@ -22,7 +22,7 @@
       <div class="grapher-block">
         <h3 class="grapher-block-title">自己紹介</h3>
         <p class="grapher-block-text">
-          初めまして！よろしくおねがいします！
+          {{user.profile_text}}
         </p>
       </div>
       <div class="grapher-block">
@@ -47,5 +47,10 @@
 
 <script>
 export default {
+  props: {
+    user: {
+      type: Object,
+    }
+  },
 }
 </script>
