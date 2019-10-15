@@ -91,6 +91,117 @@ li {
   content: none !important;
 }
 
+#mypage .container {
+  padding: 0 !important;
+}
+
+#mypage .v-card {
+  box-shadow: none !important;
+}
+
+#mypage .v-application--wrap {
+  background-color: #fff !important;
+}
+
+#mypage .v-item-group {
+  margin-bottom: 10px !important;
+}
+
+#mypage .v-input--selection-controls {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#mypage .v-input__slot {
+  margin-bottom: 0 !important;
+}
+
+#mypage .v-messages {
+  display: none;
+}
+
+#mypage .v-input--switch__thumb {
+  width: 28px;
+  height: 28px;
+  top: calc(50% - 14px);
+}
+
+#mypage .v-input--selection-controls__ripple:before {
+  content: none;
+}
+
+#mypage .v-input--switch__track {
+  border-radius: 8px;
+  width: 41px;
+  height: 14px;
+  left: 4px;
+  position: absolute;
+  opacity: 0.6;
+  right: 2px;
+  top: calc(50% - 7px);
+}
+
+#mypage .genre-cap .v-input--checkbox {
+  position: absolute;
+}
+
+#mypage .genre-cap .v-input--selection-controls__ripple {
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  transition: all 0s !important;
+}
+
+#mypage .genre-cap .v-icon.notranslate {
+  opacity: 0;
+}
+
+#mypage .genre-cap * {
+  width: 80px;
+  height: 80px;
+  transition: all 0s !important;
+}
+
+#mypage label {
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.v-input--selection-controls .v-input__control {
+  width: 100% !important;
+}
+
+#mypage .v-input--radio-group--column .v-radio:not(:last-child):not(:only-child) {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d8d8d8;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#mypage .v-input--selection-controls__input {
+  position: absolute;
+  right: 0;
+}
+
+#mypage .v-input--selection-controls__ripple.accent--text,
+#mypage .mdi-radiobox-marked,
+#mypage .v-input--switch__thumb {
+  color: #397ed6 !important;
+  caret-color: #397ed6 !important;
+}
+
+.v-tab {
+  font-weight: bold !important;
+}
+
+.v-tab:before {
+  content: none !important;
+  background-color: none !important;
+}
+
 .inner {
   padding: 0 14px;
 }
@@ -375,6 +486,7 @@ li {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 50%;
 }
 
 .grapher-name {
@@ -414,6 +526,7 @@ li {
 }
 
 .genre-list .genre-cap {
+  position: relative;
   width: 80px;
   height: 80px;
   overflow: hidden;
@@ -574,5 +687,136 @@ li {
   height: 21px;
   background: url(/images/twitter_only.svg?16149df84d8726b7af52902fffdbda07) no-repeat;
   background-size: cover;
+}
+
+#mypage {
+  margin-top: 50px;
+  padding-bottom: 80px;
+}
+
+#mypage .grapher-cap {
+  width: 80px;
+  margin: 0 auto 5px auto;
+}
+
+#mypage .grapher-name {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#mypage .genre-cap img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+#mypage .genre-cap.active img {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+
+.mydata-title {
+  font-weight: bold;
+  background: #f5f5f5;
+  color: #838588;
+  padding: 22px 10px 10px 14px;
+}
+
+.mydata-content {
+  position: relative;
+  padding: 20px 14px;
+}
+
+.mydata--dm .mydata-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-photo {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.my-photo li {
+  width: 50%;
+  height: auto;
+  position: relative;
+  border-bottom: 1px solid #fff;
+}
+
+.my-photo li:nth-child(2n) {
+  border-left: 1px solid #fff;
+}
+
+.my-photo li:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  /* ここを100％にすることで正方形になる */
+}
+
+.my-photo li span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.my-photo li span:before {
+  content: "";
+  height: 100%;
+  vertical-align: middle;
+  width: 0px;
+  display: inline-block;
+}
+
+.my-photo li span > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.my-photo li span img {
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.price-col {
+  display: flex;
+}
+
+.price-col .price-title {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.arrow {
+  position: relative;
+}
+
+.arrow:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #838588;
+  border-right: 2px solid #838588;
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.page-bar {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
 }
 

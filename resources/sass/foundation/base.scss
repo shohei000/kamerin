@@ -75,3 +75,94 @@ ul,li{
 .v-bottom-navigation .v-btn:before{
   content: none !important;
 }
+#mypage .container{
+  padding: 0 !important;
+}
+#mypage .v-card{
+  box-shadow:none !important;
+}
+#mypage .v-application--wrap{
+  background-color: #fff !important;
+}
+#mypage .v-item-group{
+  margin-bottom: 10px !important;
+}
+#mypage .v-input--selection-controls{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+#mypage .v-input__slot{
+  margin-bottom: 0 !important;
+}
+#mypage .v-messages{
+  display: none;
+}
+
+#mypage .v-input--switch__thumb{
+  width: 28px;
+  height: 28px;
+  top: calc(50% - 14px);
+}
+#mypage .v-input--selection-controls__ripple:before{
+  content: none;
+}
+#mypage .v-input--switch__track{
+  border-radius: 8px;
+  width: 41px;
+  height: 14px;
+  left: 4px;
+  position: absolute;
+  opacity: .6;
+  right: 2px;
+  top: calc(50% - 7px);
+}
+#mypage .genre-cap .v-input--checkbox{
+  position: absolute;
+}
+#mypage .genre-cap .v-input--selection-controls__ripple{
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  transition: all 0s !important;
+}
+#mypage .genre-cap .v-icon.notranslate{
+  opacity: 0;
+}
+#mypage .genre-cap * {
+  width: 80px;
+  height: 80px;
+  transition: all 0s !important;
+}
+#mypage label{
+  width: 100%;
+  color: rgba(0,0,0,.87);
+}
+.v-input--selection-controls .v-input__control{
+  width: 100% !important;
+}
+#mypage .v-input--radio-group--column .v-radio:not(:last-child):not(:only-child){
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d8d8d8;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#mypage .v-input--selection-controls__input{
+  position: absolute;
+  right: 0;
+}
+#mypage .v-input--selection-controls__ripple.accent--text,
+#mypage .mdi-radiobox-marked,
+#mypage .v-input--switch__thumb{
+  color: #397ed6 !important;
+  caret-color: #397ed6 !important;
+}
+.v-tab{
+  font-weight: bold !important;
+}
+.v-tab:before{
+  content: none !important;
+  background-color: none !important;
+}

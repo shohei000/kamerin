@@ -39,7 +39,7 @@
           一眼レフ
         </p>
       </div>
-      <div class="dm-btn-wrap"><a href="" class="btn btn--dm">ダイレクトメッセージする</a></div>
+      <div class="dm-btn-wrap"><a href="twitter://user?screen_name=kzhrk0430" class="btn btn--dm">ダイレクトメッセージする</a></div>
     </div>
   </div>
 </template>
