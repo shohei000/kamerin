@@ -1,5 +1,8 @@
 <template>
   <div>
+    <button v-if="isLogin" class="button button--link" @click="logout">
+      Logout
+    </button>
     <div class="page-bar">マイページ</div>
     <div id="mypage">
       <div class="grapher-cap"><img src="/assets/img/human/1.jpg" alt=""></div>
@@ -106,6 +109,7 @@
 
 <script>
   import EditText from '../components/EditText.vue'
+  import { mapState, mapGetters } from 'vuex'
   export default {
     components: {
       EditText,
@@ -124,11 +128,25 @@
         dm: true,
       }
     },
+    computed: {
+      ...mapState({
+        apiStatus: state => state.auth.apiStatus
+      }),
+      ...mapGetters({
+        isLogin: 'auth/check'
+      })
+    },
     methods: {
       async fetchUser () {
         const response = await axios.get(`/api/auth_user/`)
         this.user = response.data;
       },
+      async logout () {
+        await this.$store.dispatch('auth/logout')
+        if (this.apiStatus) {
+          this.$router.push('/login')
+        }
+      }
     },
     watch: {
       $route: {

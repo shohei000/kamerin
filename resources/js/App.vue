@@ -4,10 +4,10 @@
       <header>
         <Navbar />
       </header>    
-      <main>
+      <main class="main">
         <div>
           <RouterView />
-          <!-- <v-bottom-navigation :value="activeBtn" grow>
+          <v-bottom-navigation :value="activeBtn" grow>
 
             <RouterLink to="/">
               <v-btn value="home">
@@ -16,24 +16,29 @@
               </v-btn>
             </RouterLink>
             
-            <RouterLink to="/search">    
+            <!-- <RouterLink to="/search">    
               <v-btn value="search">
                 <span>さがす</span>
                 <v-icon medium>mdi-account-search</v-icon>
               </v-btn>
-            </RouterLink>
+            </RouterLink> -->
 
-            <RouterLink to="/mypage">
+            <RouterLink to="/mypage" v-if="isLogin">
               <v-btn value="mypage">
                 <span>マイページ</span>
                 <v-icon medium>mdi-account-circle</v-icon>
               </v-btn>
             </RouterLink>
+            <RouterLink class="button button--link" to="/login" v-else>
+              <v-btn value="mypage">
+                <span>ログイン/新規登録</span>
+                <v-icon medium>mdi-account-off</v-icon>
+              </v-btn>
+            </RouterLink>
 
-          </v-bottom-navigation> -->
+          </v-bottom-navigation>
         </div>
       </main>
-      <Footer />
     </div>
   </v-app>
 </template>
@@ -43,6 +48,11 @@
   import Navbar from './components/Navbar.vue'
   import Footer from './components/Footer.vue'
   export default {
+    data(){
+      return{
+        activeBtn:false
+      }
+    },
     components: {
       Navbar,
       Footer
@@ -50,6 +60,12 @@
     computed: {
       errorCode () {
         return this.$store.state.error.code
+      },
+      isLogin () {
+        return this.$store.getters['auth/check']
+      },
+      username () {
+        return this.$store.getters['auth/username']
       }
     },
     watch: {

@@ -1,18 +1,10 @@
-@import "variables";
-@import "base";
-@import "container";
-@import "grid";
-@import "navbar";
-@import "photo";
-@import "photo-detail";
-@import "photo-form";
-@import "button";
-@import "form";
-@import "tab";
-@import "footer";
-@import "errors";
-@import "pagination";
-@import "panel";
-@import "title";
-@import "loader";
-@import "message";
+@charset "UTF-8";
+
+
+@import "foundation/base";
+@import "foundation/common";
+@import "foundation/navbar";
+@import "foundation/login";
+@import "components/grapher/list";
+@import "components/grapher/detail";
+@import "components/page/mypage";

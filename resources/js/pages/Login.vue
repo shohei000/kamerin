@@ -1,16 +1,16 @@
 <template>
-  <div class="container--small">
+  <div class="container--small login-register">
     <ul class="tab">
       <li
         class="tab__item"
         :class="{'tab__item--active': tab === 1 }"
         @click="tab = 1"
-      >Login</li>
+      >ログイン</li>
       <li
         class="tab__item"
         :class="{'tab__item--active': tab === 2 }"
         @click="tab = 2"
-      >Register</li>
+      >新規登録</li>
     </ul>
     <div class="panel" v-show="tab === 1">
       <form class="form" @submit.prevent="login">
@@ -22,12 +22,29 @@
             <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
           </ul>
         </div>
-        <label for="login-email">Email</label>
-        <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
-        <label for="login-password">Password</label>
-        <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
+        
+        <div class="inp-wrap">
+          <label for="login-email" class="inp">
+            <input type="text" class="form__item" id="login-email" v-model="loginForm.email" placeholder="ニックネーム">
+            <span class="border"></span>
+          </label>
+        </div>
+
+        <div class="inp-wrap">
+          <label for="login-password" class="inp">
+            <input type="password" class="form__item" id="login-password" v-model="loginForm.password" placeholder="パスワード">
+            <span class="border"></span>
+          </label>
+        </div>
+
+
+
+        <!-- <input type="text" class="form__item" id="login-email" v-model="loginForm.email" placeholder="メールアドレス"> -->
+        <!-- <input type="password" class="form__item" id="login-password" v-model="loginForm.password" placeholder="パスワード"> -->
+
+        
         <div class="form__button">
-          <button type="submit" class="button button--inverse">login</button>
+          <button type="submit" class="btn button--inverse">ログイン</button>
         </div>
       </form>
     </div>
@@ -44,16 +61,41 @@
             <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
           </ul>
         </div>
-        <label for="username">Name</label>
-        <input type="text" class="form__item" id="username" v-model="registerForm.name">
-        <label for="email">Email</label>
-        <input type="text" class="form__item" id="email" v-model="registerForm.email">
-        <label for="password">Password</label>
-        <input type="password" class="form__item" id="password" v-model="registerForm.password">
-        <label for="password-confirmation">Password (confirm)</label>
-        <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
+
+        <div class="inp-wrap">
+          <label for="login-email" class="inp">
+            <input type="text" class="form__item" id="login-email" v-model="registerForm.name" placeholder="ニックネーム">
+            <span class="border"></span>
+          </label>
+        </div>
+        <div class="inp-wrap">
+          <label for="login-email" class="inp">
+            <input type="text" class="form__item" id="login-email" v-model="registerForm.email" placeholder="メールアドレス">
+            <span class="border"></span>
+          </label>
+        </div>
+        <div class="inp-wrap">
+          <label for="login-password" class="inp">
+            <input type="password" class="form__item" id="login-password" v-model="registerForm.password" placeholder="パスワード">
+            <span class="border"></span>
+          </label>
+        </div>
+        <div class="inp-wrap">
+          <label for="login-password" class="inp">
+            <input type="password" class="form__item" id="login-password" v-model="registerForm.password_confirmation" placeholder="パスワード(確認用)">
+            <span class="border"></span>
+          </label>
+        </div>
+        
+        
+        <!-- <input type="text" class="form__item" id="username" v-model="registerForm.name" placeholder="ニックネーム"> -->
+        <!-- <input type="text" class="form__item" id="email" v-model="registerForm.email" placeholder="メールアドレス"> -->
+        <!-- <input type="password" class="form__item" id="password" v-model="registerForm.password" placeholder="パスワード"> -->
+        <!-- <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation" placeholder="パスワード(確認用)"> -->
+
+
         <div class="form__button">
-          <button type="submit" class="button button--inverse">register</button>
+          <button type="submit" class="btn button--inverse">新規登録</button>
         </div>
       </form>
     </div>
@@ -65,7 +107,7 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      tab: 2,
+      tab: 1,
       loginForm: {
         email: '',
         password: ''

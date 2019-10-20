@@ -14,9 +14,11 @@
   <link rel="stylesheet" href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 
+
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
