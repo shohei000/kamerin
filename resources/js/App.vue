@@ -1,10 +1,13 @@
 <template>
   <v-app id="inspire">
     <div>
+      <header>
+        <Navbar />
+      </header>    
       <main>
         <div>
           <RouterView />
-          <v-bottom-navigation :value="activeBtn" grow>
+          <!-- <v-bottom-navigation :value="activeBtn" grow>
 
             <RouterLink to="/">
               <v-btn value="home">
@@ -27,19 +30,40 @@
               </v-btn>
             </RouterLink>
 
-          </v-bottom-navigation>
+          </v-bottom-navigation> -->
         </div>
       </main>
+      <Footer />
     </div>
   </v-app>
 </template>
 
 <script>
+  import { INTERNAL_SERVER_ERROR } from './util'
+  import Navbar from './components/Navbar.vue'
+  import Footer from './components/Footer.vue'
   export default {
-    data () {
-      return {
-        activeBtn: 'home',
+    components: {
+      Navbar,
+      Footer
+    },
+    computed: {
+      errorCode () {
+        return this.$store.state.error.code
       }
     },
-  }  
+    watch: {
+      errorCode: {
+        handler (val) {
+          if (val === INTERNAL_SERVER_ERROR) {
+            this.$router.push('/500')
+          }
+        },
+        immediate: true
+      },
+      $route () {
+        this.$store.commit('error/setCode', null)
+      }
+    }
+  }
 </script>

@@ -5,6 +5,10 @@ import VueRouter from 'vue-router'
 import Top from './pages/Top.vue'
 import Mypage from './pages/Mypage.vue'
 import Search from './pages/Search.vue'
+import Login from './pages/Login.vue'
+import System from './pages/errors/System.vue'
+
+import store from './store'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -21,12 +25,27 @@ const routes = [
     }
   },
   {
+    path: '/login',
+    component: Login,
+    beforeEnter(to, from, next) {
+      if (store.getters['auth/check']) {
+        next('/')
+      } else {
+        next()
+      }
+    }
+  },
+  {
     path: '/mypage',
     component: Mypage,
   },
   {
     path: '/search',
     component: Search,
+  },
+  {
+    path: '/500',
+    component: System
   }
 ]
 

@@ -1,6 +1,5 @@
 import './bootstrap'
 
-
 import Vue from 'vue'
 // ルーティングの定義をインポートする
 import router from './router'
@@ -17,6 +16,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.use(Vuetify);
 
 const createApp = async () => {
+  await store.dispatch('auth/currentUser')
   new Vue({
     el: '#app',
     store,
