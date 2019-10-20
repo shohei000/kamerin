@@ -25,7 +25,7 @@
         
         <div class="inp-wrap">
           <label for="login-email" class="inp">
-            <input type="text" class="form__item" id="login-email" v-model="loginForm.email" placeholder="ニックネーム">
+            <input type="text" class="form__item" id="login-email" v-model="loginForm.email" placeholder="メールアドレス">
             <span class="border"></span>
           </label>
         </div>

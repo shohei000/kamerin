@@ -15,7 +15,7 @@
             <v-container fluid>
               <div class="mydata">
                 <div class="mydata-title">活動場所</div>
-                <input type="text" class="mydata-content" value="東京、神奈川">
+                <input type="text" class="mydata-content" v-model="user.location">
               </div>
               <div class="mydata">
                 <div class="mydata-title">自己紹介</div>
@@ -30,12 +30,12 @@
               </div>
               <div class="mydata">
                 <div class="mydata-title">Twitterアカウント</div>
-                <input type="text" value="aegaergkaeri" class="mydata-content">
+                <input type="text" class="mydata-content" v-model="user.twitter">
               </div>
               <div class="mydata">
                 <div class="mydata-title">料金</div>
                 <div class="mydata-content">
-                  <v-radio-group v-model="price">
+                  <v-radio-group v-model="user.price">
                     <v-radio :key="1" :label="`Free！`" :value="1"></v-radio>
                     <v-radio :key="2" :label="`応相談`" :value="2"></v-radio>
                   </v-radio-group>
@@ -43,7 +43,7 @@
               </div>
               <div class="mydata mydata--dm">
                 <div class="mydata-title">Twitterダイレクトメッセージ</div>
-                <div class="mydata-content"><span>受け付ける</span><v-switch v-model="dm"></v-switch></div>
+                <div class="mydata-content"><span>受け付ける</span><v-switch v-model="user.dm_ok"></v-switch></div>
               </div>
               <div class="mydata">
                 <div class="mydata-title">ジャンル</div>
@@ -75,12 +75,12 @@
               </div>
               <div class="mydata">
                 <div class="mydata-title">機材</div>
-                <v-bottom-sheet v-model="sheet.equipment">
+                <v-bottom-sheet v-model="sheet.tool">
                   <template v-slot:activator="{ on }">
-                    <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.equipment }}</span></div>
+                    <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.tool }}</span></div>
                   </template>
                   <v-sheet>
-                    <EditText :text="user.equipment" key="equipment" />
+                    <EditText :text="user.tool" key="tool" />
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
@@ -119,13 +119,11 @@
         tab: null,
         tabs: 2,
         user: '',
+        genre:[],
         sheet: {
           'profile_text':false, 
-          'equipment':false
+          'tool':false
         },
-        price: 1,
-        genre: [true, false, false],
-        dm: true,
       }
     },
     computed: {
@@ -138,8 +136,11 @@
     },
     methods: {
       async fetchUser () {
-        const response = await axios.get(`/api/auth_user/`)
+        const response = await axios.get(`/api/auth_user/`)        
         this.user = response.data;
+        this.genre = response.data.genre.split(',').map((item) => {
+          return Number(item);
+        });
       },
       async logout () {
         await this.$store.dispatch('auth/logout')

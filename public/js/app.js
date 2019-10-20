@@ -2579,13 +2579,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       tab: null,
       tabs: 2,
       user: '',
+      genre: [],
       sheet: {
         'profile_text': false,
-        'equipment': false
-      },
-      price: 1,
-      genre: [true, false, false],
-      dm: true
+        'tool': false
+      }
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
@@ -2611,8 +2609,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 2:
                 response = _context.sent;
                 this.user = response.data;
+                this.genre = response.data.genre.split(',').map(function (item) {
+                  return Number(item);
+                });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -5453,7 +5454,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       id: "login-email",
-                      placeholder: "ニックネーム"
+                      placeholder: "メールアドレス"
                     },
                     domProps: { value: _vm.loginForm.email },
                     on: {
@@ -5821,8 +5822,29 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.user.location,
+                              expression: "user.location"
+                            }
+                          ],
                           staticClass: "mydata-content",
-                          attrs: { type: "text", value: "東京、神奈川" }
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.user.location },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.user,
+                                "location",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ]),
                       _vm._v(" "),
@@ -5897,8 +5919,25 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.user.twitter,
+                              expression: "user.twitter"
+                            }
+                          ],
                           staticClass: "mydata-content",
-                          attrs: { type: "text", value: "aegaergkaeri" }
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.user.twitter },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.user, "twitter", $event.target.value)
+                            }
+                          }
                         })
                       ]),
                       _vm._v(" "),
@@ -5915,11 +5954,11 @@ var render = function() {
                               "v-radio-group",
                               {
                                 model: {
-                                  value: _vm.price,
+                                  value: _vm.user.price,
                                   callback: function($$v) {
-                                    _vm.price = $$v
+                                    _vm.$set(_vm.user, "price", $$v)
                                   },
-                                  expression: "price"
+                                  expression: "user.price"
                                 }
                               },
                               [
@@ -5952,11 +5991,11 @@ var render = function() {
                             _c("span", [_vm._v("受け付ける")]),
                             _c("v-switch", {
                               model: {
-                                value: _vm.dm,
+                                value: _vm.user.dm_ok,
                                 callback: function($$v) {
-                                  _vm.dm = $$v
+                                  _vm.$set(_vm.user, "dm_ok", $$v)
                                 },
-                                expression: "dm"
+                                expression: "user.dm_ok"
                               }
                             })
                           ],
@@ -6101,7 +6140,7 @@ var render = function() {
                                         ),
                                         [
                                           _c("span", [
-                                            _vm._v(_vm._s(_vm.user.equipment))
+                                            _vm._v(_vm._s(_vm.user.tool))
                                           ])
                                         ]
                                       )
@@ -6110,11 +6149,11 @@ var render = function() {
                                 }
                               ]),
                               model: {
-                                value: _vm.sheet.equipment,
+                                value: _vm.sheet.tool,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.sheet, "equipment", $$v)
+                                  _vm.$set(_vm.sheet, "tool", $$v)
                                 },
-                                expression: "sheet.equipment"
+                                expression: "sheet.tool"
                               }
                             },
                             [
@@ -6123,8 +6162,8 @@ var render = function() {
                                 "v-sheet",
                                 [
                                   _c("EditText", {
-                                    key: "equipment",
-                                    attrs: { text: _vm.user.equipment }
+                                    key: "tool",
+                                    attrs: { text: _vm.user.tool }
                                   })
                                 ],
                                 1

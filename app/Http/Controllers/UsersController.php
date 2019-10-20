@@ -16,7 +16,7 @@ class UsersController extends Controller
 
   public function auth_user()
   {
-    $user = User::find(1)->first();
+    $user = \Auth::User();
     return $user;
   }
 }
