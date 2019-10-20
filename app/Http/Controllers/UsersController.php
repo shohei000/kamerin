@@ -13,4 +13,10 @@ class UsersController extends Controller
     $users = User::paginate();
     return $users;
   }
+
+  public function auth_user()
+  {
+    $user = User::find(1)->first();
+    return $user;
+  }
 }

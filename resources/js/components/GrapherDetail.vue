@@ -14,10 +14,9 @@
       </div>
       <div class="grapher-block">
         <div class="grapher-block-title">活動場所</div>
-        <ul class="grapher-base">
-          <li>東京</li>
-          <li>神奈川</li>
-        </ul>
+        <p class="grapher-block-text">
+          東京、神奈川
+        </p>
       </div>
       <div class="grapher-block">
         <h3 class="grapher-block-title">自己紹介</h3>

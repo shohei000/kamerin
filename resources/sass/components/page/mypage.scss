@@ -31,8 +31,18 @@
   &-content{
     position: relative;
     padding: 20px 14px;
-    &--arrow{
-      
+    max-width: 100%;
+    overflow: hidden;
+    span{
+      padding-right: 10px;
+    }
+    &--line2{
+      span{
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+      }
     }
   }
   &--dm{
@@ -96,6 +106,15 @@
     margin-right: 20px;
     font-weight: bold;
   }
+}
+
+.edit-text{
+  height: 90vh;
+  padding: 20px;
+}
+
+textarea,input{
+  width: 100%;
 }
 
 

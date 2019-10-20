@@ -1,25 +1,33 @@
 <template>
   <div>
     <div class="page-bar">マイページ</div>
-    
-
     <div id="mypage">
-
       <div class="grapher-cap"><img src="/assets/img/human/1.jpg" alt=""></div>
-      <div class="grapher-name">よし</div>
+      <div class="grapher-name">{{ user.name }}</div>
       <v-card>
         <v-tabs>
           <v-tab>プロフィール</v-tab>
-          <v-tab>作品一覧</v-tab>    
+          <v-tab>作品一覧</v-tab>
           <v-tab-item :key="1">
             <v-container fluid>
               <div class="mydata">
+                <div class="mydata-title">活動場所</div>
+                <input type="text" class="mydata-content" value="東京、神奈川">
+              </div>
+              <div class="mydata">
                 <div class="mydata-title">自己紹介</div>
-                <div class="mydata-content arrow">さあああああああああああ</div>
+                <v-bottom-sheet v-model="sheet.profile_text">
+                  <template v-slot:activator="{ on }">
+                    <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.profile_text }}</span></div>
+                  </template>
+                  <v-sheet>
+                    <EditText :text="user.profile_text" key="profile_text" />
+                  </v-sheet>
+                </v-bottom-sheet>
               </div>
               <div class="mydata">
                 <div class="mydata-title">Twitterアカウント</div>
-                <div class="mydata-content arrow">aegaergkaeri</div>
+                <input type="text" value="aegaergkaeri" class="mydata-content">
               </div>
               <div class="mydata">
                 <div class="mydata-title">料金</div>
@@ -37,8 +45,6 @@
               <div class="mydata">
                 <div class="mydata-title">ジャンル</div>
                 <div class="mydata-content">
-
-
                   <ul class="genre-list">
                     <li>
                       <div class="genre-cap" v-bind:class="{ active: genre[0] }">
@@ -62,12 +68,18 @@
                       <div class="genre-name">レイヤー</div>
                     </li>
                   </ul>
-
                 </div>
               </div>
               <div class="mydata">
                 <div class="mydata-title">機材</div>
-                <div class="mydata-content arrow">一眼レフ</div>
+                <v-bottom-sheet v-model="sheet.equipment">
+                  <template v-slot:activator="{ on }">
+                    <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.equipment }}</span></div>
+                  </template>
+                  <v-sheet>
+                    <EditText :text="user.equipment" key="equipment" />
+                  </v-sheet>
+                </v-bottom-sheet>
               </div>
             </v-container>
           </v-tab-item>
@@ -87,27 +99,44 @@
       </v-card>
 
     </div>
-    
-
-    
-    
-    
-      
       
   </div>
 </template>
 
 
 <script>
+  import EditText from '../components/EditText.vue'
   export default {
+    components: {
+      EditText,
+    },
     data () {
       return {
         tab: null,
         tabs: 2,
+        user: '',
+        sheet: {
+          'profile_text':false, 
+          'equipment':false
+        },
         price: 1,
         genre: [true, false, false],
         dm: true,
       }
     },
+    methods: {
+      async fetchUser () {
+        const response = await axios.get(`/api/auth_user/`)
+        this.user = response.data;
+      },
+    },
+    watch: {
+      $route: {
+        async handler () {
+          await this.fetchUser()
+        },
+        immediate: true
+      }
+    }
   }
 </script>

@@ -188,7 +188,7 @@ li {
 
 #mypage .v-input--selection-controls__ripple.accent--text,
 #mypage .mdi-radiobox-marked,
-#mypage .v-input--switch__thumb {
+#mypage .v-input--switch__thumb.theme--light.accent--text {
   color: #397ed6 !important;
   caret-color: #397ed6 !important;
 }
@@ -724,6 +724,19 @@ li {
 .mydata-content {
   position: relative;
   padding: 20px 14px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.mydata-content span {
+  padding-right: 10px;
+}
+
+.mydata-content--line2 span {
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
 }
 
 .mydata--dm .mydata-content {
@@ -795,6 +808,16 @@ li {
 .price-col .price-title {
   margin-right: 20px;
   font-weight: bold;
+}
+
+.edit-text {
+  height: 90vh;
+  padding: 20px;
+}
+
+textarea,
+input {
+  width: 100%;
 }
 
 .arrow {
