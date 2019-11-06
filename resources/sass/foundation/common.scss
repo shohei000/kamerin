@@ -1,23 +1,30 @@
 .main{
   padding-top: 45px;
+  padding-bottom: 60px;
 }
 
 .inner{
   padding: 0 14px;
 }
 
+.btn-wrap{
+  margin-top: 30px;
+  text-align: center;
+}
 .btn{
   position: relative;
   background: #ea5b91;
   color: #fff !important;
-  border-radius: 10px;
-  padding: 10px 0;
+  border-radius: 8px;
+  padding: 15px 0;
   margin: 14px 14px 0 14px;
-  display: block;
+  display: inline-block;
   text-align: center;
-  font-family: "Nico Moji";
   text-decoration: none;
   font-size: 16px;
+  font-weight: bold;
+  min-width: 65%;
+  box-shadow: 1px 2px 3px #a9a9a9;
   &--arrow{
     position: absolute;
     display: block;

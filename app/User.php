@@ -9,6 +9,18 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    
+
+    public function genres() 
+    {
+        return $this->belongsToMany('App\Genre', 'user_genres');
+    }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Photo');
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -16,8 +28,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'opend',
+        'dm_ok', 'icon_url', 'twitter',
+        'profile_text', 'tool', 'location', 'price',
     ];
+
+    protected $with = ['genres', 'photos'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +52,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+
 }

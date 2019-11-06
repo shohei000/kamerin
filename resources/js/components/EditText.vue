@@ -1,15 +1,11 @@
 <template>
   <div class="edit-text">
-    <textarea name="" id="" cols="30" rows="10">{{text}}</textarea>
+    <textarea name="" cols="30" rows="10" @input="$emit('input',  $event.target.value)">{{ longtext }}</textarea>
   </div>    
 </template>
 
 <script>
   export default {
-    props: {
-      text: {
-        type: String,
-      }
-    },
+    props: ['longtext'],
   }
 </script>

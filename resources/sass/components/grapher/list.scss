@@ -59,6 +59,11 @@
   position: relative;
   display: block;
   text-decoration: none;
+  .btn{
+    padding: 8px 0;
+    font-size: 14px;
+    width: 80%;
+  }
 }
 
 .my-sns{
@@ -97,6 +102,12 @@
   color: #387fd7;
   font-weight: bold;
   font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 

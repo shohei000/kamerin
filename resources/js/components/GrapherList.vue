@@ -25,7 +25,7 @@
             <div class="grapher-box-link" v-ripple v-on="on" @click="detailUpdate(user.id)">
               <div class="grapher-box-info">
                 <div class="grapher-box-name">{{ user.name }}</div>
-                <div class="grapher-box-pref">神奈川県</div>
+                <div class="grapher-box-pref">{{ user.location }}</div>
               </div>
               <span class="btn">みてみる</span>
             </div>

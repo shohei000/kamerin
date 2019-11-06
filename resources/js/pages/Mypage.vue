@@ -24,7 +24,7 @@
                     <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.profile_text }}</span></div>
                   </template>
                   <v-sheet>
-                    <EditText :text="user.profile_text" key="profile_text" />
+                    <EditText :longtext="user.profile_text" v-model="user.profile_text" key="profile_text"/>
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
@@ -45,34 +45,34 @@
                 <div class="mydata-title">Twitterダイレクトメッセージ</div>
                 <div class="mydata-content"><span>受け付ける</span><v-switch v-model="user.dm_ok"></v-switch></div>
               </div>
-              <div class="mydata">
+              <!-- <div class="mydata">
                 <div class="mydata-title">ジャンル</div>
                 <div class="mydata-content">
                   <ul class="genre-list">
                     <li>
-                      <div class="genre-cap" v-bind:class="{ active: genre[0] }">
-                        <v-checkbox v-model="genre[0]"></v-checkbox>
+                      <div class="genre-cap" v-bind:class="{ active: checkedVal[0] }">
+                        <v-checkbox v-model="checkedVal[0]" v-bind:value="checkedVal[0]"></v-checkbox>
                         <img src="/assets/img/genre/band.png" alt="">
                       </div>
                       <div class="genre-name">バンド</div>
                     </li>
                     <li>
-                      <div class="genre-cap" v-bind:class="{ active: genre[1] }">
-                        <v-checkbox v-model="genre[1]"></v-checkbox>
+                      <div class="genre-cap" v-bind:class="{ active: checkedVal[1] }">
+                        <v-checkbox v-model="checkedVal[1]"></v-checkbox>
                         <img src="/assets/img/genre/solo.png" alt="">
                       </div>
                       <div class="genre-name">シンガー</div>
                     </li>
                     <li>
-                      <div class="genre-cap" v-bind:class="{ active: genre[2] }">
-                        <v-checkbox v-model="genre[2]"></v-checkbox>
+                      <div class="genre-cap" v-bind:class="{ active: checkedVal[2] }">
+                        <v-checkbox v-model="checkedVal[2]"></v-checkbox>
                         <img src="/assets/img/genre/layer.png" alt="">
                       </div>
                       <div class="genre-name">レイヤー</div>
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> -->
               <div class="mydata">
                 <div class="mydata-title">機材</div>
                 <v-bottom-sheet v-model="sheet.tool">
@@ -80,26 +80,31 @@
                     <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.tool }}</span></div>
                   </template>
                   <v-sheet>
-                    <EditText :text="user.tool" key="tool" />
+                    <EditText :longtext="user.tool" v-model="user.tool" key="tool"/>
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
             </v-container>
+            <div class="btn-wrap update-btn-wrap"><button class="btn" @click="submit">更新する</button></div>
           </v-tab-item>
           <v-tab-item :key="2">
             <v-container fluid>
-              <ul class="my-photo">
-                <li><span><img src="/assets/img/1.jpeg" alt=""></span></li>
-                <li><span><img src="/assets/img/2.jpeg" alt=""></span></li>
-                <li><span><img src="/assets/img/3.jpeg" alt=""></span></li>
-                <li><span><img src="/assets/img/4.jpeg" alt=""></span></li>
-                <li><span><img src="/assets/img/5.jpeg" alt=""></span></li>
-                <li><span><img src="/assets/img/6.jpeg" alt=""></span></li>
-              </ul>
+              <PhotoForm @fetchUser="fetchUser"/>
+              <div class="my-photo">
+                <Photo
+                  class="my-photo-item"
+                  v-for="photo in user.photos"
+                  :key="photo.id"
+                  :photo="photo"
+                  :user="user"
+                />
+              </div>
             </v-container>
           </v-tab-item>
         </v-tabs>
       </v-card>
+
+      
 
     </div>
       
@@ -109,17 +114,21 @@
 
 <script>
   import EditText from '../components/EditText.vue'
+  import PhotoForm from '../components/PhotoForm.vue'
+  import Photo from '../components/Photo.vue'
   import { mapState, mapGetters } from 'vuex'
   export default {
     components: {
       EditText,
+      PhotoForm,
+      Photo,
     },
     data () {
       return {
         tab: null,
         tabs: 2,
-        user: '',
-        genre:[],
+        user:'',
+        checkedVal:[],
         sheet: {
           'profile_text':false, 
           'tool':false
@@ -136,17 +145,18 @@
     },
     methods: {
       async fetchUser () {
-        const response = await axios.get(`/api/auth_user/`)        
+        const response = await axios.get(`/api/auth_user/`)
         this.user = response.data;
-        this.genre = response.data.genre.split(',').map((item) => {
-          return Number(item);
-        });
+        this.checkedVal = response.data.genres;
       },
       async logout () {
         await this.$store.dispatch('auth/logout')
         if (this.apiStatus) {
           this.$router.push('/login')
         }
+      },
+      async submit () {
+        const response = await axios.post('/api/profile_update', this.user)
       }
     },
     watch: {
