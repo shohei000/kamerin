@@ -31,6 +31,7 @@ const actions = {
   // 会員登録
   async register(context, data) {
     context.commit('setApiStatus', null)
+    
     const response = await axios.post('/api/register', data)
 
     if (response.status === CREATED) {

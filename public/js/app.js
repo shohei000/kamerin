@@ -2329,7 +2329,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2451,12 +2450,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5656,8 +5649,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "photo-form" }, [
-    _c("h2", { staticClass: "title" }, [_vm._v("Submit a photo")]),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -6006,7 +5997,7 @@ var render = function() {
                     staticClass: "form__item",
                     attrs: {
                       type: "text",
-                      id: "login-email",
+                      id: "register-name",
                       placeholder: "ニックネーム"
                     },
                     domProps: { value: _vm.registerForm.name },
@@ -6042,7 +6033,7 @@ var render = function() {
                     staticClass: "form__item",
                     attrs: {
                       type: "text",
-                      id: "login-email",
+                      id: "register-email",
                       placeholder: "メールアドレス"
                     },
                     domProps: { value: _vm.registerForm.email },
@@ -6078,7 +6069,7 @@ var render = function() {
                     staticClass: "form__item",
                     attrs: {
                       type: "password",
-                      id: "login-password",
+                      id: "register-password",
                       placeholder: "パスワード"
                     },
                     domProps: { value: _vm.registerForm.password },
@@ -6118,7 +6109,7 @@ var render = function() {
                     staticClass: "form__item",
                     attrs: {
                       type: "password",
-                      id: "login-password",
+                      id: "register-confirmation-password",
                       placeholder: "パスワード(確認用)"
                     },
                     domProps: { value: _vm.registerForm.password_confirmation },
@@ -6515,8 +6506,6 @@ var render = function() {
                       "v-container",
                       { attrs: { fluid: "" } },
                       [
-                        _c("PhotoForm", { on: { fetchUser: _vm.fetchUser } }),
-                        _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "my-photo" },
@@ -6528,7 +6517,9 @@ var render = function() {
                             })
                           }),
                           1
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("PhotoForm", { on: { fetchUser: _vm.fetchUser } })
                       ],
                       1
                     )

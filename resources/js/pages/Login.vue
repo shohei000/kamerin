@@ -64,36 +64,30 @@
 
         <div class="inp-wrap">
           <label for="login-email" class="inp">
-            <input type="text" class="form__item" id="login-email" v-model="registerForm.name" placeholder="ニックネーム">
+            <input type="text" class="form__item" id="register-name" v-model="registerForm.name" placeholder="ニックネーム">
             <span class="border"></span>
           </label>
         </div>
         <div class="inp-wrap">
           <label for="login-email" class="inp">
-            <input type="text" class="form__item" id="login-email" v-model="registerForm.email" placeholder="メールアドレス">
+            <input type="text" class="form__item" id="register-email" v-model="registerForm.email" placeholder="メールアドレス">
             <span class="border"></span>
           </label>
         </div>
         <div class="inp-wrap">
           <label for="login-password" class="inp">
-            <input type="password" class="form__item" id="login-password" v-model="registerForm.password" placeholder="パスワード">
+            <input type="password" class="form__item" id="register-password" v-model="registerForm.password" placeholder="パスワード">
             <span class="border"></span>
           </label>
         </div>
         <div class="inp-wrap">
           <label for="login-password" class="inp">
-            <input type="password" class="form__item" id="login-password" v-model="registerForm.password_confirmation" placeholder="パスワード(確認用)">
+            <input type="password" class="form__item" id="register-confirmation-password" v-model="registerForm.password_confirmation" placeholder="パスワード(確認用)">
             <span class="border"></span>
           </label>
         </div>
         
         
-        <!-- <input type="text" class="form__item" id="username" v-model="registerForm.name" placeholder="ニックネーム"> -->
-        <!-- <input type="text" class="form__item" id="email" v-model="registerForm.email" placeholder="メールアドレス"> -->
-        <!-- <input type="password" class="form__item" id="password" v-model="registerForm.password" placeholder="パスワード"> -->
-        <!-- <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation" placeholder="パスワード(確認用)"> -->
-
-
         <div class="form__button">
           <button type="submit" class="btn button--inverse">新規登録</button>
         </div>

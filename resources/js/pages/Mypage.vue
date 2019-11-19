@@ -89,7 +89,6 @@
           </v-tab-item>
           <v-tab-item :key="2">
             <v-container fluid>
-              <PhotoForm @fetchUser="fetchUser"/>
               <div class="my-photo">
                 <Photo
                   class="my-photo-item"
@@ -99,6 +98,7 @@
                   :user="user"
                 />
               </div>
+              <PhotoForm @fetchUser="fetchUser"/>
             </v-container>
           </v-tab-item>
         </v-tabs>

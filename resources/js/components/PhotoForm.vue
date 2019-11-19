@@ -1,6 +1,5 @@
 <template>
   <div class="photo-form">
-    <h2 class="title">Submit a photo</h2>
     <div v-show="loading" class="panel">
       <Loader>Sending your photo...</Loader>
     </div>
