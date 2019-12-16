@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('role')->default(1);
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->integer('opend')->nullable()->default(1);
             $table->boolean('dm_ok')->default(1);
             $table->string('icon_url')->nullable();
