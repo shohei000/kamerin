@@ -29,7 +29,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'opend',
-        'dm_ok', 'icon_url', 'twitter',
+        'dm_ok', 'icon_url', 'twitter', "twitter_id",
         'profile_text', 'tool', 'location', 'price',
     ];
 
