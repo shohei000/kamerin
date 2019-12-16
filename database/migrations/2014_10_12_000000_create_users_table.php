@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('dm_ok')->default(1);
             $table->string('icon_url')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('twitter_id')->nullable();
             $table->string('profile_text')->nullable();
             $table->string('location')->nullable();                       //活動場所
             $table->string('tool')->nullable();                           //機材
