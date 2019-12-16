@@ -12,15 +12,19 @@
           >
             <div class="grapher-photos-wrap">
               <div class="grapher-box-photos" data-photos>
-                <img src="/assets/img/1.jpeg" alt="">
-                <img src="/assets/img/2.jpeg" alt="">
-                <img src="/assets/img/3.jpeg" alt="">
+                <Photo
+                  class="my-photo-item"
+                  v-for="photo in user.photos"
+                  :key="photo.id"
+                  :photo="photo"
+                  :user="user"
+                />
               </div>
-              <div class="dots">
+<!--               <div class="dots">
                 <span class="is-active"></span>
                 <span></span>
                 <span></span>
-              </div>
+              </div> -->
             </div>
             <div class="grapher-box-link" v-ripple v-on="on" @click="detailUpdate(user.id)">
               <div class="grapher-box-info">
@@ -52,10 +56,12 @@
 <script>
 import GrapherBox from '../components/GrapherBox.vue'
 import GrapherDetail from '../components/GrapherDetail.vue'
+import Photo from '../components/Photo.vue'
 export default {
   components: {
     GrapherBox,
-    GrapherDetail
+    GrapherDetail,
+    Photo
   },
   props: {
     page: {

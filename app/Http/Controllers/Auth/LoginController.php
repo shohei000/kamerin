@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+use Socialite;
+use App\User;
+use Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -21,12 +25,40 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    // ログイン
+    public function redirectToProvider(){
+        return Socialite::driver('twitter')->redirect();
+    }
+
+    // コールバック
+    public function handleProviderCallback(){
+        try {
+            $twitterUser = Socialite::driver('twitter')->user();
+        } catch (Exception $e) {
+            return redirect('auth/twitter');
+        }
+        // 各自ログイン処理
+        // 例
+        $user = User::where('twitter_id', $twitterUser->id)->first();
+        if (!$user) {
+            $user = new User;
+            $user->name = $twitterUser->name;
+            $user->twitter_id = $twitterUser->id;
+        }
+        $user->save();
+        Auth::login($user);
+        return redirect('/');
+    }
+
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = '/home';
+
+
 
     /**
      * Create a new controller instance.

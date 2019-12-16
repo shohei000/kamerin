@@ -5,3 +5,9 @@
 Route::get('/{any?}', function () {
   return view('index');
 })->where('any', '.+');
+
+
+// twitterログインURL
+Route::get('auth/twitter', 'Auth\LoginController@redirectToProvider');
+// twitterコールバックURL
+Route::get('auth/twitter/callback', 'Auth\LoginController@handleProviderCallback');

@@ -1,5 +1,8 @@
 <template>
   <div class="container--small login-register">
+    
+    <a href="/auth/twitter" class="btn bg-tw btn--form"><span class="icon-tw">twitterでログインする</span></a>
+
     <ul class="tab">
       <li
         class="tab__item"
