@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('tool')->nullable();                           //機材
             $table->integer('price')->nullable();                         //料金
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
