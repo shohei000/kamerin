@@ -1,3 +1,19 @@
+.theme--light.v-application{
+  @include pc {
+    width: $pc_size;
+    margin: 0 auto;
+  }
+}
+.v-dialog__content{
+  @include pc {
+    width: $pc_size !important;
+    margin: 0 auto;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  } 
+}
+
+
 .main{
   padding-top: 45px;
   padding-bottom: 60px;

@@ -1955,6 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Photo_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Photo.vue */ "./resources/js/components/Photo.vue");
 //
 //
 //
@@ -2001,7 +2002,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Photo: _components_Photo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     user: {
       type: Object
@@ -2024,6 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_GrapherBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/GrapherBox.vue */ "./resources/js/components/GrapherBox.vue");
 /* harmony import */ var _components_GrapherDetail_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/GrapherDetail.vue */ "./resources/js/components/GrapherDetail.vue");
+/* harmony import */ var _components_Photo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Photo.vue */ "./resources/js/components/Photo.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2081,12 +2090,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     GrapherBox: _components_GrapherBox_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    GrapherDetail: _components_GrapherDetail_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    GrapherDetail: _components_GrapherDetail_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Photo: _components_Photo_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
     page: {
@@ -2138,7 +2153,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchUsers;
     }(),
     detailUpdate: function detailUpdate(user_id) {
-      this.sheet_user = this.users[user_id - 1];
+      var _this = this;
+
+      // this.sheet_user = this.users;
+      this.users.forEach(function (index) {
+        if (index.id == user_id) {
+          _this.sheet_user = index;
+        }
+      });
     }
   },
   watch: {
@@ -2450,6 +2472,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -5246,13 +5271,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "grapher" }, [
-    _vm._m(0),
+    _c(
+      "div",
+      { staticClass: "grapher-photos", attrs: { "data-photos": "" } },
+      _vm._l(_vm.user.photos, function(photo) {
+        return _c("Photo", {
+          key: photo.id,
+          staticClass: "my-photo-item",
+          attrs: { photo: photo, user: _vm.user }
+        })
+      }),
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "grapher-inner" }, [
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "grapher-block flex" }, [
-        _vm._m(2),
+        _vm._m(1),
         _vm._v(" "),
         _c("div", { staticClass: "grapher-name" }, [
           _vm._v(_vm._s(_vm.user.name))
@@ -5283,29 +5319,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(2)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "grapher-photos", attrs: { "data-photos": "" } },
-      [
-        _c("img", { attrs: { src: "/assets/img/7.jpeg", alt: "" } }),
-        _vm._v(" "),
-        _c("img", { attrs: { src: "/assets/img/2.jpeg", alt: "" } }),
-        _vm._v(" "),
-        _c("img", { attrs: { src: "/assets/img/3.jpeg", alt: "" } }),
-        _vm._v(" "),
-        _c("img", { attrs: { src: "/assets/img/4.jpeg", alt: "" } })
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -5387,28 +5405,15 @@ var render = function() {
                                 staticClass: "grapher-box-photos",
                                 attrs: { "data-photos": "" }
                               },
-                              [
-                                _c("img", {
-                                  attrs: { src: "/assets/img/1.jpeg", alt: "" }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  attrs: { src: "/assets/img/2.jpeg", alt: "" }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  attrs: { src: "/assets/img/3.jpeg", alt: "" }
+                              _vm._l(user.photos, function(photo) {
+                                return _c("Photo", {
+                                  key: photo.id,
+                                  staticClass: "my-photo-item",
+                                  attrs: { photo: photo, user: user }
                                 })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "dots" }, [
-                              _c("span", { staticClass: "is-active" }),
-                              _vm._v(" "),
-                              _c("span"),
-                              _vm._v(" "),
-                              _c("span")
-                            ])
+                              }),
+                              1
+                            )
                           ]),
                           _vm._v(" "),
                           _c(
@@ -5762,6 +5767,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container--small login-register" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c("ul", { staticClass: "tab" }, [
       _c(
         "li",
@@ -5914,7 +5921,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _vm._m(1)
           ]
         )
       ]
@@ -6132,7 +6139,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _vm._m(2)
           ]
         )
       ]
@@ -6140,6 +6147,20 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "btn bg-tw btn--form", attrs: { href: "/auth/twitter" } },
+      [
+        _c("span", { staticClass: "icon-tw" }, [
+          _vm._v("twitterでログインする")
+        ])
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

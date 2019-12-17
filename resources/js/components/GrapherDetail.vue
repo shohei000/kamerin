@@ -1,10 +1,13 @@
 <template>
   <div class="grapher"> 
     <div class="grapher-photos" data-photos>
-      <img src="/assets/img/7.jpeg" alt="">
-      <img src="/assets/img/2.jpeg" alt="">
-      <img src="/assets/img/3.jpeg" alt="">
-      <img src="/assets/img/4.jpeg" alt="">
+      <Photo
+        class="my-photo-item"
+        v-for="photo in user.photos"
+        :key="photo.id"
+        :photo="photo"
+        :user="user"
+      />
     </div>
     <div class="grapher-inner">
       <div class="grapher-okmark"><img src="/assets/img/dm_ok.svg" alt=""></div>
@@ -45,7 +48,11 @@
 
 
 <script>
+import Photo from '../components/Photo.vue'
 export default {
+  components: {
+    Photo
+  },
   props: {
     user: {
       type: Object,
