@@ -2153,7 +2153,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchUsers;
     }(),
     detailUpdate: function detailUpdate(user_id) {
-      console.log(this.users); // this.sheet_user = this.users[0][user_id];
+      var _this = this;
+
+      // this.sheet_user = this.users;
+      this.users.forEach(function (index) {
+        if (index.id == user_id) {
+          _this.sheet_user = index;
+        }
+      });
     }
   },
   watch: {

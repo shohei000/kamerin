@@ -1,5 +1,74 @@
 @charset "UTF-8";
 
+@-webkit-keyframes bottomBoderFirst {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes bottomBoderFirst {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}
+
+@-webkit-keyframes bottomBoderLast {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes bottomBoderLast {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.loader {
+  -webkit-animation: loader 1.5s ease 0s infinite forwards;
+  animation: loader 1.5s ease 0s infinite forwards;
+}
+
+@-webkit-keyframes loader {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loader {
+  100% {
+    opacity: 1;
+  }
+}
+
+.sample {
+  background: #cccccc\9;
+  /* IE10以下 */
+}
+
+@media all and (-ms-high-contrast: none) {
+  .sample {
+    background: #cccccc;
+    /* IE10以上 */
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -50,6 +119,14 @@ li {
   width: 100% !important;
   z-index: 100;
   height: 49px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .v-bottom-navigation {
+    width: 400px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
 }
 
 .v-item-group.v-bottom-navigation .v-btn.v-btn--active .v-btn__content {
@@ -202,6 +279,22 @@ li {
   background-color: none !important;
 }
 
+@media screen and (min-width: 768px) {
+  .theme--light.v-application {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .v-dialog__content {
+    width: 400px !important;
+    margin: 0 auto;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
 .main {
   padding-top: 45px;
   padding-bottom: 60px;
@@ -351,6 +444,14 @@ li {
   z-index: 100;
   height: 45px;
   background: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    width: 400px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
 }
 
 .navbar__brand {

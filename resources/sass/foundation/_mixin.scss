@@ -1,0 +1,277 @@
+$pc_size:400px;
+
+@mixin pcBig() {
+  @media screen and (min-width: 1300px) {
+    @content;
+  }
+}
+@mixin pc() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin sp() {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin fontSize($size) {
+  font-size: $size + px;
+  font-size: ($size / 10) * 1rem;
+}
+
+@mixin scaleImg(){
+  overflow: hidden;
+  display: block;
+  img{
+    -moz-transition: -moz-transform 0.1s linear;
+    -webkit-transition: -webkit-transform 0.1s linear;
+    -o-transition: -o-transform 0.1s linear;
+    -ms-transition: -ms-transform 0.1s linear;
+    transition: transform 0.1s linear;
+  }
+  &:hover{
+    img{
+      transform: scale(1.1,1.1);
+    }
+  }
+}
+
+@mixin font-vw($font_size:10){
+  font-size: $font_size + px;
+  font-size: get-vw($font_size);
+}
+@mixin wd-vw($size){
+  width: $size + px;
+  width: get-vw($size);
+}
+@mixin he-vw($size){
+  height: $size + px;
+  height: get-vw($size);
+}
+@mixin minhe-vw($size){
+  min-height: $size + px;
+  min-height: get-vw($size);
+}
+@mixin margin-vw($top:0,$right:0,$bottom:0,$left:0,$auto:false){
+  @if $auto != false {
+    margin: $top+px auto $bottom+px auto;
+    margin: get-vw($top) auto get-vw($bottom) auto;
+  } @else {
+    margin: $top+px $right+px $bottom+px $left+px;
+    margin: get-vw($top) get-vw($right) get-vw($bottom) get-vw($left);
+  }
+}
+@mixin padding-vw($top:0,$right:0,$bottom:0,$left:0){
+  padding: $top+px $right+px $bottom+px $left+px;
+  padding: get-vw($top) get-vw($right) get-vw($bottom) get-vw($left);
+}
+@mixin top-vw($val: 0) {
+  top: $val+px;
+  top: get-vw($val);
+}
+@mixin left-vw($val: 0) {
+  left: $val+px;
+  left: get-vw($val);
+}
+@mixin right-vw($val: 0) {
+  right: $val+px;
+  right: get-vw($val);
+}
+@mixin bottom-vw($val: 0) {
+  bottom: $val+px;
+  bottom: get-vw($val);
+}
+@mixin border-radius-vh($size) {
+  border-radius: $size / 2+px;
+  border-radius: get-vh($size) / 2;
+}
+
+@mixin font-vh($font_size:10){
+  font-size: $font_size + px;
+  font-size: get-vh($font_size);
+}
+@mixin wd-vh($size){
+  width: $size + px;
+  width: get-vh($size);
+}
+@mixin he-vh($size){
+  height: $size + px;
+  height: get-vh($size);
+}
+@mixin minhe-vh($size){
+  min-height: $size + px;
+  min-height: get-vh($size);
+}
+@mixin margin-vh($top:0,$right:0,$bottom:0,$left:0,$auto:false){
+  @if $auto != false {
+    margin: $top+px auto $bottom+px auto;
+    margin: get-vh($top) auto get-vh($bottom) auto;
+  } @else {
+    margin: $top+px $right+px $bottom+px $left+px;
+    margin: get-vh($top) get-vh($right) get-vh($bottom) get-vh($left);
+  }
+}
+@mixin padding-vh($top:0,$right:0,$bottom:0,$left:0){
+  padding: $top+px $right+px $bottom+px $left+px;
+  padding: get-vh($top) get-vh($right) get-vh($bottom) get-vh($left);
+}
+@mixin top-vh($val: 0) {
+  top: $val+px;
+  top: get-vh($val);
+}
+@mixin left-vh($val: 0) {
+  left: $val+px;
+  left: get-vh($val);
+}
+@mixin right-vh($val: 0) {
+  right: $val+px;
+  right: get-vh($val);
+}
+@mixin bottom-vh($val: 0) {
+  bottom: $val+px;
+  bottom: get-vh($val);
+}
+
+
+
+@mixin menu-trigger($bg:#0f82c6,$round:0,$size:40px){
+  transition: all .4s;
+  box-sizing: border-box;
+  width: $size;
+  height: $size;
+  background-color: #fff;
+  padding: 10px;
+  z-index: 100;
+  @if $round == circle{
+    border-radius: 50%;
+  } @else if $round == square{
+    border-radius: 0;
+  }
+  span{
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    &:nth-of-type(1) {
+      top: 10px;
+      left: 20%;
+      width: 60%;
+    }
+    &:nth-of-type(2) {
+      top: 47%;
+      left: 20%;
+      width: 60%;
+    }
+    &:nth-of-type(3) {
+      bottom: 10px;
+      left: 20%;
+      width: 60%;
+    }
+  }
+  &.is-active{
+    span{
+      background-color: #c6093b;
+      &:nth-of-type(1) {
+        -webkit-transform: translateY(10px) rotate(-315deg);
+        transform: translateY(10px) rotate(-315deg);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:nth-of-type(3) {
+        -webkit-transform: translateY(-9px) rotate(315deg);
+        transform: translateY(-9px) rotate(315deg);
+      }
+    }
+  }
+}
+
+
+@mixin bottomBoderAnimation(){
+ &:before,&:after{
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    content: "";
+    height: 3px;
+    transition:all 0.4s;
+  }
+  &:before{right: 0;width: 100%;background-color: #cccccc;}
+  &:after{left: 0;width: 0;background-color: red;}
+  &:hover{
+    &:before{animation:bottomBoderFirst 0.3s 0s 1 forwards;}
+    &:after{animation:bottomBoderLast 0.3s 0.3s 1 forwards;}
+  } 
+}
+@keyframes bottomBoderFirst {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+@keyframes bottomBoderLast {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+
+
+@mixin cc($top:50%,$left:50%){
+  text-align: center;
+  position: absolute;
+  top: $top;
+  left: $left;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+
+@mixin animationValue( $name, $duration , $function, $delay, $count, $state){
+  -webkit-animation: $name $duration+s $function $delay+s $count $state;
+  animation: $name $duration+s $function $delay+s $count $state;
+}
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+
+.loader{
+  @include animationValue(loader, 1.5, ease, 0 , infinite, forwards);
+}
+
+@include keyframes(loader) {
+  100% { opacity: 1; }
+}
+
+
+@mixin text-flow{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.sample{
+  background: #cccccc\9; /* IE10以下 */
+}
+
+@media all and (-ms-high-contrast: none){
+  .sample{
+    background: #cccccc; /* IE10以上 */
+  }
+}
+
+
+
+
+

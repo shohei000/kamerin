@@ -39,6 +39,11 @@ ul,li{
   width: 100% !important;
   z-index: 100;
   height: 49px !important;
+  @include pc {
+    width: $pc_size !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
 }
 .v-item-group.v-bottom-navigation .v-btn.v-btn--active .v-btn__content{
   color: #397ed6 !important;
