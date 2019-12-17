@@ -87,7 +87,8 @@ export default {
       this.lastPage = response.data.last_page
     },
     detailUpdate(user_id){
-      this.sheet_user = this.users[user_id - 1];
+      console.log(this.users)
+      // this.sheet_user = this.users[0][user_id];
     }
   },
   watch: {
