@@ -82,17 +82,12 @@ export default {
   methods: {
     async fetchUsers () {
       const response = await axios.get(`/api/users/?page=${this.page}`)
-      this.users = response.data.data
+      this.users = Object.fromEntries(response.data.data.map(user => [user.id, user])) 
       this.currentPage = response.data.current_page
       this.lastPage = response.data.last_page
     },
     detailUpdate(user_id){ 
-      // this.sheet_user = this.users;
-      this.users.forEach((index) => {
-        if(index.id == user_id){
-          this.sheet_user = index;
-        }
-      });
+      this.sheet_user = this.users[user_id];
     }
   },
   watch: {

@@ -2134,7 +2134,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                this.users = response.data.data;
+                this.users = Object.fromEntries(response.data.data.map(function (user) {
+                  return [user.id, user];
+                }));
                 this.currentPage = response.data.current_page;
                 this.lastPage = response.data.last_page;
 
@@ -2153,14 +2155,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return fetchUsers;
     }(),
     detailUpdate: function detailUpdate(user_id) {
-      var _this = this;
-
-      // this.sheet_user = this.users;
-      this.users.forEach(function (index) {
-        if (index.id == user_id) {
-          _this.sheet_user = index;
-        }
-      });
+      this.sheet_user = this.users[user_id];
     }
   },
   watch: {
@@ -2328,7 +2323,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -5704,12 +5698,6 @@ var render = function() {
                 : _vm._e()
             ])
           : _vm._e(),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form__item",
-          attrs: { type: "file", multiple: "" },
-          on: { change: _vm.onFileChange }
-        }),
         _vm._v(" "),
         _c("input", {
           staticClass: "form__item",
@@ -61584,8 +61572,8 @@ function getCookieValue(searchKey) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/kuronsya/Documents/myService/kamerin/server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/kuronsya/Documents/myService/kamerin/server/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/saisho/Documents/myService/kamerin/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/saisho/Documents/myService/kamerin/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

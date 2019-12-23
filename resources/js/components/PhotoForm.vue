@@ -10,7 +10,6 @@
         </ul>
       </div>
       <input class="form__item" type="file" @change="onFileChange" multiple>
-      <input class="form__item" type="file" @change="onFileChange" multiple>
       <output class="form__output" v-for="(preview, i) in previews" v-if="preview" :key="i">
         <img :src="preview" alt="">
       </output>
