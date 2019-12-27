@@ -28,19 +28,22 @@
   text-align: center;
 }
 .btn{
+  display: inline-block;
   position: relative;
   background: #ea5b91;
   color: #fff !important;
   border-radius: 8px;
   padding: 15px 0;
   margin: 14px 14px 0 14px;
-  display: inline-block;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   min-width: 65%;
   box-shadow: 1px 2px 3px #a9a9a9;
+  &--block{
+    display: block;
+  }
   &--arrow{
     position: absolute;
     display: block;
@@ -53,6 +56,10 @@
     border-right: 2px solid #fff;
     border-radius: 1px;
     transform: rotate(45deg) translateY(-50%);
+  }
+  &--tw{
+    background-color:#1da1f2;
+    margin-bottom: 60px !important;
   }
 }
 
@@ -149,4 +156,12 @@
   padding: 14px 0;
   background-color: #fff;
   text-align: center;
+}
+
+input::placeholder {
+  color:#ccc;
+}
+
+.fs-12{
+  font-size: 12px;
 }

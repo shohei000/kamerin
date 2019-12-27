@@ -3,19 +3,22 @@
     <div v-show="loading" class="panel">
       <Loader>Sending your photo...</Loader>
     </div>
-    <form v-show="! loading" class="form" @submit.prevent="submit">
+    <form v-show="! loading" class="form">
       <div class="errors" v-if="errors">
         <ul v-if="errors.photos">
           <li v-for="msg in errors.photos" :key="msg">{{ msg }}</li>
         </ul>
       </div>
-      <input class="form__item" type="file" @change="onFileChange" multiple>
+      <div class="up-img-area js-img-append">
+        <span class="plus"><b>＋</b></span>
+        <input class="form__item" type="file" @change="onFileChange" multiple>
+      </div>
       <output class="form__output" v-for="(preview, i) in previews" v-if="preview" :key="i">
         <img :src="preview" alt="">
       </output>
-      <div class="form__button">
+      <!-- <div class="form__button">
         <button type="submit" class="button button--inverse">submit</button>
-      </div>
+      </div> -->
     </form>
   </div>
 </template>
@@ -55,6 +58,8 @@ export default {
 
       reader.readAsDataURL(event.target.files[0])
       this.photos.push(event.target.files[0])
+
+      this.submit();
       
     },
     reset () {

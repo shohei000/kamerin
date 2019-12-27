@@ -1,19 +1,24 @@
 <template>
   <div class="container--small login-register">
+    <h1 class="site-name">カメリン</h1>
+    <p class="lead">
+      カメラマンとして登録しよう！
+    </p>
     
-    <a href="/auth/twitter" class="btn bg-tw btn--form"><span class="icon-tw">twitterでログインする</span></a>
+    
+    <a href="/auth/twitter" class="btn btn--block btn--tw"><span class="icon-tw">twitterでログインする</span></a>
 
     <ul class="tab">
-      <li
-        class="tab__item"
-        :class="{'tab__item--active': tab === 1 }"
-        @click="tab = 1"
-      >ログイン</li>
       <li
         class="tab__item"
         :class="{'tab__item--active': tab === 2 }"
         @click="tab = 2"
       >新規登録</li>
+      <li
+        class="tab__item"
+        :class="{'tab__item--active': tab === 1 }"
+        @click="tab = 1"
+      >ログイン</li>
     </ul>
     <div class="panel" v-show="tab === 1">
       <form class="form" @submit.prevent="login">
@@ -47,7 +52,7 @@
 
         
         <div class="form__button">
-          <button type="submit" class="btn button--inverse">ログイン</button>
+          <button type="submit" class="btn btn--block button--inverse">ログイン</button>
         </div>
       </form>
     </div>
@@ -92,7 +97,7 @@
         
         
         <div class="form__button">
-          <button type="submit" class="btn button--inverse">新規登録</button>
+          <button type="submit" class="btn btn btn--block button--inverse">新規登録</button>
         </div>
       </form>
     </div>
@@ -104,7 +109,7 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      tab: 1,
+      tab: 2,
       loginForm: {
         email: '',
         password: ''

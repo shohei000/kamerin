@@ -10,7 +10,7 @@
       />
     </div>
     <div class="grapher-inner">
-      <div class="grapher-okmark"><img src="/assets/img/dm_ok.svg" alt=""></div>
+      <div v-if="user.dm_ok" class="grapher-okmark"><img src="/assets/img/dm_ok.svg" alt=""></div>
       <div class="grapher-block flex">
         <div class="grapher-cap"><img src="/assets/img/human/1.jpg" alt=""></div>
         <div class="grapher-name">{{user.name}}</div>
@@ -41,7 +41,7 @@
           {{user.tool}}
         </p>
       </div>
-      <div class="dm-btn-wrap"><a href="twitter://user?screen_name=kzhrk0430" class="btn btn--dm">ダイレクトメッセージする</a></div>
+      <div class="dm-btn-wrap" v-if="user.dm_ok"><a v-bind:href="'twitter://user?screen_name=' + user.twitter_id" class="btn btn--dm">ダイレクトメッセージする</a></div>
     </div>
   </div>
 </template>

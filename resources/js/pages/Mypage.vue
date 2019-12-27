@@ -1,11 +1,13 @@
 <template>
   <div>
-    <button v-if="isLogin" class="button button--link" @click="logout">
-      Logout
-    </button>
     <div class="page-bar">マイページ</div>
     <div id="mypage">
-      <div class="grapher-cap"><img src="/assets/img/human/1.jpg" alt=""></div>
+      <div class="grapher-cap">
+        <img
+          :src="user.icon_url"
+          ref="image"
+        >
+      </div>
       <div class="grapher-name">{{ user.name }}</div>
       <v-card>
         <v-tabs>
@@ -14,8 +16,12 @@
           <v-tab-item :key="1">
             <v-container fluid>
               <div class="mydata">
+                <div class="mydata-title">ニックネーム</div>
+                <input type="text" class="mydata-content" v-model="user.name">
+              </div>
+              <div class="mydata">
                 <div class="mydata-title">活動場所</div>
-                <input type="text" class="mydata-content" v-model="user.location">
+                <input type="text" class="mydata-content" v-model="user.location" placeholder="下北沢">
               </div>
               <div class="mydata">
                 <div class="mydata-title">自己紹介</div>
@@ -29,15 +35,15 @@
                 </v-bottom-sheet>
               </div>
               <div class="mydata">
-                <div class="mydata-title">Twitterアカウント</div>
-                <input type="text" class="mydata-content" v-model="user.twitter">
+                <div class="mydata-title">Twitterアカウント <span class="fs-12">※@無し</span></div>
+                <input type="text" class="mydata-content" v-model="user.twitter" placeholder="MomentsJapan">
               </div>
               <div class="mydata">
                 <div class="mydata-title">料金</div>
                 <div class="mydata-content">
                   <v-radio-group v-model="user.price">
-                    <v-radio :key="1" :label="`Free！`" :value="1"></v-radio>
-                    <v-radio :key="2" :label="`応相談`" :value="2"></v-radio>
+                    <v-radio :key="1" :label="`応相談`" :value="1"></v-radio>
+                    <v-radio :key="2" :label="`Free！`" :value="2"></v-radio>
                   </v-radio-group>
                 </div>
               </div>
@@ -80,7 +86,7 @@
                     <div class="mydata-content mydata-content--line2 arrow" v-on="on"><span>{{ user.tool }}</span></div>
                   </template>
                   <v-sheet>
-                    <EditText :longtext="user.tool" v-model="user.tool" key="tool"/>
+                    <EditText :longtext="user.tool" v-model="user.tool" key="tool" aria-placeholder=""/>
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
@@ -105,6 +111,9 @@
       </v-card>
 
       
+      <button v-if="isLogin" class="logout-text" @click="logout">
+        ログアウト
+      </button>  
 
     </div>
       
@@ -117,6 +126,7 @@
   import PhotoForm from '../components/PhotoForm.vue'
   import Photo from '../components/Photo.vue'
   import { mapState, mapGetters } from 'vuex'
+import { log } from 'util'
   export default {
     components: {
       EditText,
